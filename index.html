@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>SYNTH CLUB</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="icon" href="favicon.ico" type="image/ico">
 
     <script type="application/ld+json">
@@ -47,9 +47,9 @@
             background-color: #0a021b;
             color: #00fff7;
             font-family: 'Courier New', monospace;
-            height: 100vh;
-            overflow: hidden;
-            touch-action: manipulation;
+            height: auto;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         body::before {
@@ -66,9 +66,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100%;
-            padding: 24px;
+            min-height: 100vh;
+            height: auto;
             box-sizing: border-box;
+            padding: 20px;
         }
 
         #ascii-logo {
@@ -129,6 +130,8 @@
         }
 
         .fisheye {
+            max-width: 100%;
+            box-sizing: border-box;
             transform: perspective(600px) scale(1.02) rotateX(2deg) rotateY(2deg);
             filter: saturate(1.2) contrast(1.1);
             clip-path: ellipse(100% 90% at 50% 50%);
