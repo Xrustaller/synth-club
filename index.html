@@ -204,17 +204,19 @@
 `;
 
 	const terminalLines = [
+		//"> Screen: " + screen.width + "x" + screen.height,
+		//"> Viewport: " + window.innerWidth + "x" + window.innerHeight,
 		"> Initializing SYNTH CLUB uplink...",
 		"> Link established.",
 		"> Welcome, operator.",
-		"> Connected to NODE-09F1",
+		"> Connected to NODE-202F",
 		"> Access granted.",
 		"",
 		{ text: "> VrChat  : ", link: "https://vrc.group/SYNTH.2339"},
 		{ text: "> Discord  : ", link: "https://discord.com/invite/GSH33jZhVQ" },
 		{ text: "> Telegram : ", link: "https://t.me/synthvrc" },
 		"",
-		"> Initializing color system...",
+		"> Initializing color module...",
 	];
 
 	const asciiEl = document.getElementById("ascii-logo");
@@ -236,14 +238,6 @@
 	function typeLine() {
 		if (line >= terminalLines.length) {
 			finalizeVisuals();
-
-			const info = `> screen: ${screen.width}x${screen.height}
-> viewport: ${window.innerWidth}x${window.innerHeight}
-`;
-			const el = document.createElement("div");
-			el.textContent = info;
-			terminal.appendChild(el);
-
 			setTimeout(() => {
 				const cursor = document.createElement("div");
 				cursor.innerHTML = '> <span class="blink">█</span>';
@@ -302,7 +296,7 @@
 		setTimeout(() => {
 			const container = document.getElementById("visual-container");
 			const msg = document.createElement("div");
-			msg.textContent = "> Color system online.";
+			msg.textContent = "> Color module online.";
 			container.classList.remove("desaturated");
 			terminal.appendChild(msg);
 		}, 400); // лёгкая задержка для эффекта
