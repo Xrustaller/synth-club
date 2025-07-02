@@ -130,6 +130,11 @@
             clip-path: ellipse(100% 90% at 50% 50%);
         }
 
+        .desaturated {
+            filter: grayscale(1);
+            transition: filter 0.8s ease;
+        }
+
         @keyframes fisheyePulse {
             0%, 100% {
                 transform: scale(1);
@@ -165,7 +170,7 @@
         }
     </style>
 </head>
-<body>
+<body class="desaturated" id="visual-container">
 <div class="container">
     <div class="fisheye">
         <pre id="ascii-logo"></pre>
@@ -195,6 +200,7 @@
 		{ text: "> Discord  : ", link: "https://discord.com/invite/GSH33jZhVQ" },
 		{ text: "> Telegram : ", link: "https://t.me/synthvrc" },
 		"",
+		"> Initializing color system...",
 	];
 
 	const asciiEl = document.getElementById("ascii-logo");
@@ -215,6 +221,7 @@
 
 	function typeLine() {
 		if (line >= terminalLines.length) {
+			finalizeVisuals();
 			const cursor = document.createElement("div");
 			cursor.innerHTML = '> <span class="blink">█</span>';
 			terminal.appendChild(cursor);
@@ -266,6 +273,17 @@
 	window.onload = () => {
 		setTimeout(typeAscii, 300);
 	};
+
+	function finalizeVisuals() {
+		const container = document.getElementById("visual-container");
+		const msg = document.createElement("div");
+		msg.textContent = "> Color system online.";
+		terminal.appendChild(msg);
+
+		setTimeout(() => {
+			container.classList.remove("desaturated");
+		}, 200); // лёгкая задержка для эффекта
+	}
 
 	function createGlitchLine() {
 		const line = document.createElement("div");
