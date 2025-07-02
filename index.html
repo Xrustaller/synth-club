@@ -72,11 +72,12 @@
         }
 
         #ascii-logo {
+            display: block;
             font-family: monospace;
             white-space: pre;
             text-align: left;
             line-height: 1.1;
-            font-size: 12px;
+            font-size: clamp(5px, 2.5vw, 12px);
             margin-bottom: 24px;
             background: linear-gradient(90deg, #00fff7, #ff5edc);
             -webkit-background-clip: text;
@@ -86,11 +87,12 @@
 
         .terminal {
             max-width: 700px;
-            width: 700px;
+            width: 100%;
             padding: 20px;
             font-size: 0.95rem;
             white-space: pre-wrap;
             word-break: break-all;
+            box-sizing: border-box;
         }
 
         .blink {
