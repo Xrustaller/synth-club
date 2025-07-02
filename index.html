@@ -67,7 +67,7 @@
             align-items: center;
             justify-content: center;
             height: 100%;
-            padding: 20px;
+            padding: 24px;
             box-sizing: border-box;
         }
 
@@ -77,8 +77,7 @@
             text-align: left;
             line-height: 1.1;
             font-size: 12px;
-            margin-bottom: 20px;
-            padding: 0 20px;
+            margin-bottom: 24px;
             background: linear-gradient(90deg, #00fff7, #ff5edc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -175,8 +174,12 @@
         }
 
         @media screen and (max-width: 375px) {
+            .container {
+                padding: 12px;
+            }
+
             #ascii-logo {
-                font-size: 5px;
+                font-size: 6px;
                 line-height: 1;
             }
 
@@ -240,6 +243,14 @@
 	function typeLine() {
 		if (line >= terminalLines.length) {
 			finalizeVisuals();
+
+			const info = `> screen: ${screen.width}x${screen.height}
+> viewport: ${window.innerWidth}x${window.innerHeight}
+`;
+			const el = document.createElement("div");
+			el.textContent = info;
+			terminal.appendChild(el);
+
 			setTimeout(() => {
 				const cursor = document.createElement("div");
 				cursor.innerHTML = '> <span class="blink">█</span>';
