@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SYNTH CLUB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="favicon.ico" type="image/ico">
 
     <script type="application/ld+json">
@@ -72,15 +72,13 @@
         }
 
         #ascii-logo {
-            display: block;
-            overflow-x: auto;
-            white-space: pre;
-            word-break: keep-all;
             font-family: monospace;
-            font-size: min(12px, 3.5vw); /* масштабируемый размер */
+            white-space: pre;
+            text-align: left;
             line-height: 1.1;
-            padding: 0 10px;
+            font-size: 12px;
             margin-bottom: 20px;
+            padding: 0 20px;
             background: linear-gradient(90deg, #00fff7, #ff5edc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -88,13 +86,12 @@
         }
 
         .terminal {
-            width: 100%;
-            max-width: 100%;
-            box-sizing: border-box;
-            padding: 10px;
-            font-size: min(16px, 4vw);
+            max-width: 700px;
+            width: 700px;
+            padding: 20px;
+            font-size: 0.95rem;
             white-space: pre-wrap;
-            overflow-wrap: break-word;
+            word-break: break-all;
         }
 
         .blink {
@@ -131,9 +128,6 @@
         }
 
         .fisheye {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: auto;
             transform: perspective(600px) scale(1.02) rotateX(2deg) rotateY(2deg);
             filter: saturate(1.2) contrast(1.1);
             clip-path: ellipse(100% 90% at 50% 50%);
@@ -177,16 +171,6 @@
                 width: 320px;
                 font-size: 0.80rem;
                 padding: 10px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            #ascii-logo {
-                font-size: 6px;
-            }
-
-            .terminal {
-                font-size: 12px;
             }
         }
 
