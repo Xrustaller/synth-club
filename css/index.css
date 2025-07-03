@@ -1,0 +1,165 @@
+:root {
+    --background: #0a021b;
+    --sec-col: #00fff7;
+    --thr-col: #ff5edc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html, body {
+    background-color: var(--background);
+    color: #00fff7;
+    font-family: 'Courier New', monospace;
+    height: 100vh;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--sec-col);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--thr-col);
+    border-radius: 6px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.15;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    height: auto;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#ascii-logo {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    text-align: left;
+    line-height: 1.1;
+    font-size: clamp(5px, 2.5vw, 12px);
+    margin-bottom: 24px;
+    background: linear-gradient(90deg, var(--sec-col), var(--thr-col));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadein 2s ease-out forwards;
+}
+
+.terminal {
+    max-width: 700px;
+    width: 100%;
+    padding: 20px;
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+    box-sizing: border-box;
+}
+
+.blink {
+    animation: blink 1s step-start infinite;
+}
+
+a {
+    color: var(--thr-col);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#glitch-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.glitch-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--thr-col);
+    opacity: 0.7;
+    transform: scaleX(1.2);
+    animation: glitchAnim 0.2s ease-out;
+}
+
+.fisheye {
+    max-width: 100%;
+    box-sizing: border-box;
+    transform: perspective(600px) scale(1.02) rotateX(2deg) rotateY(2deg);
+    filter: saturate(1.2) contrast(1.1);
+    clip-path: ellipse(100% 90% at 50% 50%);
+}
+
+.desaturated {
+    filter: grayscale(1);
+    transition: filter 0.8s ease;
+}
+
+@keyframes fisheyePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes glitchAnim {
+    from { opacity: 0.7; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(20px); }
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+@keyframes fadein {
+    to { opacity: 1; }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 12px;
+    }
+
+    #ascii-logo {
+        font-size: 6px;
+        line-height: 1;
+    }
+
+    .terminal {
+        max-width: 320px;
+        width: 320px;
+        font-size: 0.75rem;
+        padding: 0;
+    }
+}
