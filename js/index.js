@@ -171,6 +171,7 @@ function executeCommand(cmd) {
 				"> clear    - Clear the terminal",
 				"> about    - Info about SYNTH CLUB",
 				"> version  - Show OS version",
+				"> su user  - Change the effective user",
 				"> date     - Print current date/time",
 				"> echo     - Usage: echo [text]",
 				"> random   - Get random number",
@@ -178,20 +179,36 @@ function executeCommand(cmd) {
 				"> mood     - System mood status",
 				"> glitch   - Trigger glitch effect",
 				"> color    - Current color scheme",
-				"> author   - Show author credits",
-				"> su user  - Change the effective user"
+				"> author   - Show author credits"
 			);
 			break;
 		case "su n0sha":
 			lines.push(
+				"> [INIT] Loading n0shatblpkun profile...",
+				{ delay: 800 },
 				"> [INFO] Bootstrapping underwear subsystem for user: n0sha...",
+				{ delay: 400 },
 				"> [OK] Underwear initialized successfully."
 			);
 			break;
 		case "su niki":
 			lines.push(
+				"> [INIT] Loading besniktlp profile...",
+				{ delay: 800 },
 				"> [INFO] Dongles in other room in progress... 99% complete.",
+				{ delay: 400 },
 				"> [ERROR] Your attempt was lost in IZOPLIT"
+			);
+			break;
+		case "su xrustaller":
+			lines.push(
+				"> [INIT] Loading raspberry_yogurt profile...",
+				{ delay: 800 },
+				"> Sweetness: ✅",
+				{ delay: 400 },
+				"> Health benefits: ✅",
+				{ delay: 400 },
+				"> [OK] Successfully loaded"
 			);
 			break;
 		case "clear":
