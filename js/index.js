@@ -11,7 +11,7 @@ const asciiArt =
 const version = "v0.1.10-beta";
 
 const terminalLines = [
-	"> [INIT] SYNTH OS " + version,
+	"> SYNTH OS " + version,
 	"> [INIT] Initializing uplink...",
 	{ delay: 400 },
 	"> [OK] Link established.",
@@ -216,11 +216,11 @@ function executeCommand(cmd) {
 			lines.push(
 				"> [INIT] Loading raspberry_yogurt profile...",
 				{ delay: 800 },
-				"> Sweetness: ✅",
+				"> Sweetness: OK",
 				{ delay: 400 },
-				"> Health benefits: ✅",
+				"> Health benefits: OK",
 				{ delay: 400 },
-				"> [OK] Successfully loaded"
+				"> Successfully loaded"
 			);
 			break;
 		case "clear":
