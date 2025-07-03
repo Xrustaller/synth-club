@@ -8,13 +8,16 @@ const asciiArt =
  ########     ###    ###    ####     ###     ###    ###       ########  ########## ########  #########
 `;
 
+const version = "v0.1.10-beta";
+
 const terminalLines = [
-	"> [INIT] Initializing SYNTH CLUB uplink...",
+	"> [INIT] SYNTH OS " + version,
+	"> [INIT] Initializing uplink...",
 	{ delay: 400 },
 	"> [OK] Link established.",
 	{ delay: 20 },
 	"> Welcome, operator.",
-	"> Connected to NODE-202F...",
+	"> Connected to " + generateNodeId() + "...",
 	{ delay: 400 },
 	"> Access granted.",
 	"",
@@ -28,6 +31,15 @@ const terminalLines = [
 
 const asciiEl = document.getElementById("ascii-logo");
 const terminal = document.getElementById("terminal");
+
+function generateNodeId() {
+	const hex = "0123456789ABCDEF";
+	let id = "";
+	for (let i = 0; i < 4; i++) {
+		id += hex[Math.floor(Math.random() * 16)];
+	}
+	return `NODE-${id}`;
+}
 
 function printAscii(onComplete) {
 	let asciiIndex = 0;
@@ -219,7 +231,7 @@ function executeCommand(cmd) {
 			lines.push("> SYNTH CLUB: A place for those who speak through movement. We are online.");
 			break;
 		case "version":
-			lines.push("> SYNTH OS v0.9.13-beta");
+			lines.push("> SYNTH OS " + version);
 			break;
 		case "date":
 			lines.push(`> ${new Date().toLocaleString()}`);
