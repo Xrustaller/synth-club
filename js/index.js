@@ -223,12 +223,23 @@ function executeCommand(cmd) {
 				"> Successfully loaded"
 			);
 			break;
+		case "su vanilla":
+			lines.push(
+				"> [INIT] Loading vanilla_neocore profile...",
+				{ delay: 800 },
+				"> [INFO] Scanning for cozy protocols...",
+				{ delay: 600 },
+				"> [WARN] Overload detected: too much chill.",
+				{ delay: 800 },
+				"> [OK] Comfort systems balanced. Proceed."
+			);
+			break;
 		case "clear":
 			terminal.innerHTML = "";
 			setTimeout(initPrompt, 0);
 			return;
 		case "about":
-			lines.push("> SYNTH CLUB: A place for those who speak through movement. We are online.");
+			lines.push("> SYNTH CLUB: A place for those who speak with movement. We are online.");
 			break;
 		case "version":
 			lines.push("> SYNTH OS " + version);
