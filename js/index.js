@@ -8,7 +8,7 @@ const asciiArt =
  ########     ###    ###    ####     ###     ###    ###       ########  ########## ########  #########
 `;
 
-const version = "v0.1.12-beta";
+const version = "v0.1.13-beta";
 
 const terminalLines = [
 	"> SYNTH OS " + version,
@@ -253,6 +253,52 @@ function executeCommand(cmd) {
 				"> [CRITICAL] Bedframe.exe has crashed from excessive load"
 			);
 			createGlitchLine(40, 10, 2000);
+			break;
+		case "su lenokail":
+			lines.push(
+				"> [INIT] Booting Lenokail.core...",
+				{ delay: 800 },
+				"> [INFO] Loading world_creator.dll",
+				{ delay: 600 },
+				"> [INFO] Importing mesh: dreams.fbx...",
+				{ delay: 600 },
+				"> [INFO] Applying texture: inspiration.png",
+				{ delay: 500 },
+				"> [INFO] Baking lightmaps... (please wait — beauty takes time)",
+				{ delay: 800 },
+				"> [WARNING] Shader overload detected — too much style.",
+				{ delay: 700 },
+				"> [INFO] Compiling script: god_mode.cs",
+				{ delay: 600 },
+				"> [OK] Reality successfully overwritten.",
+				{ delay: 600 },
+				"> [NOTE] Welcome to Lenoverse™. Don’t forget to press Play."
+			);
+			createGlitchLine(25, 0, 3200);
+			break;
+		case "su shadola":
+			lines.push(
+				"> [INIT] Connecting to VIP_Network.shd...",
+				{ delay: 800 },
+				"> [INFO] Accessing trusted_hosts.db — 7497 contacts verified.",
+				{ delay: 600 },
+				"> [INFO] Microphone calibrated — tone: smooth | charisma: 100%",
+				{ delay: 600 },
+				"> [FILTER] Negative vibes detected... neutralized.",
+				{ delay: 600 },
+				"> [CATCHPHRASE] No negativity™.",
+				{ delay: 700 },
+				"> [WARNING] Social turbulence ahead...",
+				{ delay: 600 },
+				"> [ACTION] Deploying charm_protocol_v2.1...",
+				{ delay: 600 },
+				"> [INFO] Smiles engaged. Awkward silences resolved.",
+				{ delay: 600 },
+				"> [OK] Situation defused with elegance.",
+				{ delay: 600 },
+				"> [NOTE] Everyone’s cool. No bridges burned."
+			);
+			createGlitchLine(100, 1, 3200);
 			break;
 		case "clear":
 			terminal.innerHTML = "";
