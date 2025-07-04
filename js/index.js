@@ -8,7 +8,7 @@ const asciiArt =
  ########     ###    ###    ####     ###     ###    ###       ########  ########## ########  #########
 `;
 
-const version = "v0.1.10-beta";
+const version = "v0.1.12-beta";
 
 const terminalLines = [
 	"> SYNTH OS " + version,
@@ -129,13 +129,19 @@ function finalizeVisuals() {
 	}, 400);
 }
 
-function createGlitchLine() {
-	const line = document.createElement("div");
-	line.className = "glitch-line";
-	line.style.top = Math.floor(Math.random() * 100) + "%";
-	line.style.backgroundColor = Math.random() > 0.5 ? "#ff5edc" : "#00fff7";
-	document.getElementById("glitch-overlay").appendChild(line);
-	setTimeout(() => line.remove(), 200);
+function createGlitchLine(count = 1, delay = 0, initialDelay = 0) {
+	setTimeout(() => {
+		for (let i = 0; i < count; i++) {
+			setTimeout(() => {
+				const line = document.createElement("div");
+				line.className = "glitch-line";
+				line.style.top = Math.floor(Math.random() * 100) + "%";
+				line.style.backgroundColor = Math.random() > 0.5 ? "#ff5edc" : "#00fff7";
+				document.getElementById("glitch-overlay").appendChild(line);
+				setTimeout(() => line.remove(), 200);
+			}, i * delay);
+		}
+	}, initialDelay);
 }
 
 setInterval(() => {
@@ -199,7 +205,7 @@ function executeCommand(cmd) {
 				"> [INIT] Loading n0shatblpkun profile...",
 				{ delay: 800 },
 				"> [INFO] Bootstrapping underwear subsystem for user: n0sha...",
-				{ delay: 400 },
+				{ delay: 600 },
 				"> [OK] Underwear initialized successfully."
 			);
 			break;
@@ -208,18 +214,19 @@ function executeCommand(cmd) {
 				"> [INIT] Loading besniktlp profile...",
 				{ delay: 800 },
 				"> [INFO] Dongles in other room in progress... 99% complete.",
-				{ delay: 400 },
+				{ delay: 600 },
 				"> [ERROR] Your attempt was lost in IZOPLIT"
 			);
+			createGlitchLine(4, 5, 1400);
 			break;
 		case "su xrustaller":
 			lines.push(
 				"> [INIT] Loading raspberry_yogurt profile...",
 				{ delay: 800 },
 				"> Sweetness: OK",
-				{ delay: 400 },
+				{ delay: 600 },
 				"> Health benefits: OK",
-				{ delay: 400 },
+				{ delay: 600 },
 				"> Successfully loaded"
 			);
 			break;
@@ -233,6 +240,19 @@ function executeCommand(cmd) {
 				{ delay: 800 },
 				"> [OK] Comfort systems balanced. Proceed."
 			);
+			createGlitchLine(5, 10, 1400);
+			break;
+		case "su viteok":
+			lines.push(
+				"> [INIT] Summoning MILFware...",
+				{ delay: 800 },
+				"> [CPU] Overheating from raw desire...",
+				{ delay: 600 },
+				"> [PANTS] Error 404: Not Found.",
+				{ delay: 800 },
+				"> [CRITICAL] Bedframe.exe has crashed from excessive load"
+			);
+			createGlitchLine(40, 10, 2000);
 			break;
 		case "clear":
 			terminal.innerHTML = "";
