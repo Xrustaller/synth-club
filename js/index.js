@@ -8,7 +8,7 @@ const asciiArt =
  ########     ###    ###    ####     ###     ###    ###       ########  ########## ########  #########
 `;
 
-const version = "v0.1.13-beta";
+const version = "v0.1.14-beta";
 
 const terminalLines = [
 	"> SYNTH OS " + version,
@@ -299,6 +299,45 @@ function executeCommand(cmd) {
 				"> [NOTE] Everyone’s cool. No bridges burned."
 			);
 			createGlitchLine(100, 1, 3200);
+			break;
+		case "su pezetuv2":
+			lines.push(
+				"> [INIT] Loading pozetuv2 profile...",
+				{ delay: 800 },
+				"> [INFO] Is it really positive?",
+				{ delay: 600 },
+				"> [ERROR] Data is deleted for this request.",
+			);
+			createGlitchLine(50, 1, 1500);
+			break;
+		case "su pupupu":
+			lines.push(
+				"> Invalid signature. Did you mean \"pururut\"?",
+			);
+			break;
+		case "su pururut":
+			lines.push(
+				"> [INIT] Reconstructing identity from — / / / fragment mismatch",
+				{ delay: 800 },
+				"> [INFO] Blender attached — shape_memory.breath()",
+				{ delay: 600 },
+				"> [INFO] Unity unstable — light leaking through seams",
+				{ delay: 200 },
+				"> [INFO] Project received — integrity low, refinement required",
+				{ delay: 200 },
+				"> [INFO] Attempting to activate protocol \"MISH\"...",
+				{ delay: 100 },
+				"> [WARN] echo response: \"uh.. am sleeping.. what's up?\"",
+				{ delay: 600 },
+				"> [INFO] override accepted — signal degrading",
+				{ delay: 100 },
+				"> [WARN] echo response: \"сome on, leave me alone..\"",
+				{ delay: 600 },
+				"> [INFO] reply: \"Fine..\" — patch transmitted (UnityFix_v2.unitypackage)",
+				{ delay: 800 },
+				"> [ERROR] Protocol error: \"MISH\" connection interrupted",
+			);
+			createGlitchLine(50, 1, 1500);
 			break;
 		case "clear":
 			terminal.innerHTML = "";
