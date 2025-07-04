@@ -8,7 +8,7 @@ const asciiArt =
  ########     ###    ###    ####     ###     ###    ###       ########  ########## ########  #########
 `;
 
-const version = "v0.1.14-beta";
+const version = "v0.1.15-beta";
 
 const terminalLines = [
 	"> SYNTH OS " + version,
@@ -20,11 +20,11 @@ const terminalLines = [
 	"> Connected to " + generateNodeId() + "...",
 	{ delay: 400 },
 	"> Access granted.",
-	"",
+	"> ",
 	{ text: "> VrChat  : ", link: "https://vrc.group/SYNTH.2339" },
 	{ text: "> Discord  : ", link: "https://discord.com/invite/GSH33jZhVQ" },
 	{ text: "> Telegram : ", link: "https://t.me/synthvrc" },
-	"",
+	"> ",
 	"> [INIT] Initializing color system...",
 	{ delay: 100 },
 ];
@@ -79,7 +79,7 @@ function printAnimatedLines(lines, onComplete) {
 			currentEl = document.createElement("div");
 
 			if (typeof currentLine === "string") {
-				currentEl.textContent = "> ";
+				currentEl.textContent = "";
 			} else if (typeof currentLine === "object" && currentLine.text && currentLine.link) {
 				currentEl.textContent = currentLine.text;
 				const a = document.createElement("a");
@@ -96,14 +96,13 @@ function printAnimatedLines(lines, onComplete) {
 		}
 
 		if (typeof currentLine === "string") {
-			const content = currentLine.slice(2);
-			currentEl.textContent += content[charIndex++] || "";
+			currentEl.textContent += currentLine[charIndex++] || "";
 		} else if (typeof currentLine === "object" && currentLine.link) {
 			currentEl._a.textContent += currentLine.link[charIndex++] || "";
 		}
 
 		const lineLength = typeof currentLine === "string"
-			? currentLine.length - 2
+			? currentLine.length
 			: currentLine.link.length;
 
 		if (charIndex < lineLength) {
@@ -338,6 +337,20 @@ function executeCommand(cmd) {
 				"> [ERROR] Protocol error: \"MISH\" connection interrupted",
 			);
 			createGlitchLine(50, 1, 1500);
+			break;
+		case "su ssnor":
+			lines.push(
+				"> [Error] You are entering a state of abundance and lust, get ready to jump to SSnor...",
+				{ delay: 800 },
+				"> [Jump_value \"true\"] Jump in 3",
+				{ delay: 1000 },
+				"> 2",
+				{ delay: 1000 },
+				"> 1",
+				{ delay: 1000 },
+				"[Value_true \"lust_abundance\"] Jump OK <",
+			);
+			createGlitchLine(200, 1, 6500);
 			break;
 		case "clear":
 			terminal.innerHTML = "";
