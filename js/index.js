@@ -8,26 +8,7 @@ const asciiArt =
  ########     ###    ###    ####     ###     ###    ###       ########  ########## ########  #########
 `;
 
-const version = "v0.1.15-beta";
-
-const terminalLines = [
-	"> SYNTH OS " + version,
-	"> [INIT] Initializing uplink...",
-	{ delay: 400 },
-	"> [OK] Link established.",
-	{ delay: 20 },
-	"> Welcome, operator.",
-	"> Connected to " + generateNodeId() + "...",
-	{ delay: 400 },
-	"> Access granted.",
-	"> ",
-	{ text: "> VrChat  : ", link: "https://vrc.group/SYNTH.2339" },
-	{ text: "> Discord  : ", link: "https://discord.com/invite/GSH33jZhVQ" },
-	{ text: "> Telegram : ", link: "https://t.me/synthvrc" },
-	"> ",
-	"> [INIT] Initializing color system...",
-	{ delay: 100 },
-];
+const version = "v0.1.17-beta";
 
 const asciiEl = document.getElementById("ascii-logo");
 const terminal = document.getElementById("terminal");
@@ -158,7 +139,7 @@ function initPrompt() {
 	input.spellcheck = false;
 	input.style.outline = "none";
 	input.style.display = "inline-block";
-	input.style.minWidth = "10px";
+	input.style.minWidth = "12px";
 
 	promptLine.innerHTML = '> ';
 	promptLine.appendChild(input);
@@ -173,13 +154,62 @@ function initPrompt() {
 			const staticLine = document.createElement("div");
 			staticLine.textContent = `> ${command}`;
 			terminal.replaceChild(staticLine, promptLine);
-			executeCommand(command);
+			if (command === "init"){
+				terminal.innerHTML = "";
+				const container = document.getElementById("visual-container");
+				container.classList.add("desaturated");
+				executeCommand("init", () => {
+					finalizeVisuals();
+					setTimeout(initPrompt, 800);
+				});
+			}
+			else {
+				executeCommand(command, initPrompt);
+			}
 		}
 	});
 }
 
-function executeCommand(cmd) {
+//function executeCommand(cmd, onComplete) {
+//	const lines = [];
+//
+//	const finish = () => printAnimatedLines(lines, onComplete);
+//
+//	if (cmd.toLowerCase() === "clear") {
+//		terminal.innerHTML = "";
+//		setTimeout(initPrompt, 0);
+//		return;
+//	}
+//
+//	fetch("/api/console", {
+//		method: "POST",
+//		headers: {
+//			"Content-Type": "application/json",
+//		},
+//		body: JSON.stringify({ command: cmd }),
+//	})
+//		.then((res) => res.json())
+//		.then((data) => {
+//			if (Array.isArray(data)) {
+//				for (const item of data) lines.push(item);
+//			} else {
+//				lines.push("> " + String(data));
+//			}
+//			printAnimatedLines(lines, initPrompt);
+//		})
+//		.catch((err) => {
+//			lines.push("> [ERROR] " + err.message);
+//			printAnimatedLines(lines, initPrompt);
+//		});
+//
+//	finish();
+//}
+
+function executeCommand(cmd, onComplete) {
 	const lines = [];
+
+	const finish = () => printAnimatedLines(lines, onComplete);
+
 	switch (cmd.toLowerCase()) {
 		case "help":
 			lines.push(
@@ -197,6 +227,27 @@ function executeCommand(cmd) {
 				"> glitch   - Trigger glitch effect",
 				"> color    - Current color scheme",
 				"> author   - Show author credits"
+			);
+			break;
+		case "init":
+			terminal.innerHTML = "";
+			lines.push(
+				"> SYNTH OS " + version,
+				"> [INIT] Initializing uplink...",
+				{ delay: 400 },
+				"> [OK] Link established.",
+				{ delay: 20 },
+				"> Welcome, operator.",
+				"> Connected to " + generateNodeId() + "...",
+				{ delay: 400 },
+				"> Access granted.",
+				"> ",
+				{ text: "> VrChat  : ", link: "https://vrc.group/SYNTH.2339" },
+				{ text: "> Discord  : ", link: "https://discord.com/invite/GSH33jZhVQ" },
+				{ text: "> Telegram : ", link: "https://t.me/synthvrc" },
+				"> ",
+				"> [INIT] Initializing color system...",
+				{ delay: 100 },
 			);
 			break;
 		case "su n0sha":
@@ -352,6 +403,26 @@ function executeCommand(cmd) {
 			);
 			createGlitchLine(200, 1, 6500);
 			break;
+		case "su halerick":
+			lines.push(
+				"> [INIT] Deploying Halerick module...",
+				{ delay: 800 },
+				"> [INFO] Syncing with Metronome Protocol...",
+				{ delay: 600 },
+				"> OK",
+				{ delay: 200 },
+				"> [VOICE] Happy Internet Day",
+				{ delay: 800 },
+				"> [ALERT] Raise your goddamn glasses",
+				{ delay: 400 },
+				"> [INFO] Checking hype reserves...",
+				{ delay: 800 },
+				"> 144% detected",
+				{ delay: 200 },
+				"> [STATUS] Celebration mode activated. Let the flexing begin",
+			);
+			createGlitchLine(200, 1, 6500);
+			break;
 		case "clear":
 			terminal.innerHTML = "";
 			setTimeout(initPrompt, 0);
@@ -395,13 +466,13 @@ function executeCommand(cmd) {
 			lines.push(`> Unknown command: ${cmd}`);
 			break;
 	}
-	printAnimatedLines(lines, initPrompt);
+	finish();
 }
 
 window.onload = () => {
 	setTimeout(() => {
 		printAscii(() => {
-			printAnimatedLines(terminalLines, () => {
+			executeCommand("init", () => {
 				finalizeVisuals();
 				setTimeout(initPrompt, 800);
 			});
