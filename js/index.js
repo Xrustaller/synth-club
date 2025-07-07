@@ -8,7 +8,7 @@ const asciiArt =
  ########     ###    ###    ####     ###     ###    ###       ########  ########## ########  #########
 `;
 
-const version = "v0.1.17-beta";
+const version = "v0.1.18-beta";
 
 const asciiEl = document.getElementById("ascii-logo");
 const terminal = document.getElementById("terminal");
@@ -242,6 +242,7 @@ function executeCommand(cmd, onComplete) {
 				{ delay: 400 },
 				"> Access granted.",
 				"> ",
+				{ text: "> Host Account  : ", link: "https://synthclub.ru/host" },
 				{ text: "> VrChat  : ", link: "https://vrc.group/SYNTH.2339" },
 				{ text: "> Discord  : ", link: "https://discord.com/invite/GSH33jZhVQ" },
 				{ text: "> Telegram : ", link: "https://t.me/synthvrc" },
