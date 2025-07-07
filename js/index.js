@@ -8,7 +8,7 @@ const asciiArt =
  ########     ###    ###    ####     ###     ###    ###       ########  ########## ########  #########
 `;
 
-const version = "v0.1.18-beta";
+const version = "v0.1.19-beta";
 
 const asciiEl = document.getElementById("ascii-logo");
 const terminal = document.getElementById("terminal");
@@ -243,8 +243,8 @@ function executeCommand(cmd, onComplete) {
 				"> Access granted.",
 				"> ",
 				{ text: "> Host Account  : ", link: "https://synthclub.ru/host" },
-				{ text: "> VrChat  : ", link: "https://vrc.group/SYNTH.2339" },
-				{ text: "> Discord  : ", link: "https://discord.com/invite/GSH33jZhVQ" },
+				{ text: "> VrChat  : ", link: "https://synthclub.ru/vrc" },
+				{ text: "> Discord  : ", link: "https://synthclub.ru/discord" },
 				{ text: "> Telegram : ", link: "https://t.me/synthvrc" },
 				"> ",
 				"> [INIT] Initializing color system...",
